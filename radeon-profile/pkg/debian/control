@@ -23,7 +23,7 @@ Homepage: https://github.com/marazmista/radeon-profile
 
 Package: radeon-profile
 Architecture: any
-Depends: xserver-xorg-video-ati | xserver-xorg-video-amdgpu, mesa-utils, x11-utils, libxrandr2, libdrm-dev, qt59charts-no-lgpl, radeon-profile-daemon
+Depends: xserver-xorg-video-ati | xserver-xorg-video-amdgpu, mesa-utils, x11-utils, libxrandr2, libdrm-dev, qt59charts-no-lgpl | libqt5charts5, radeon-profile-daemon
 Description: AMD graphics card monitoring and tweaking tool.
  Radeon Profile, open source AMD graphics card monitoring and tweaking tool.
  It supports open source drivers and fglrx.
