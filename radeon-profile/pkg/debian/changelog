@@ -1,4 +1,4 @@
-radeon-profile (0.2.4-0~trusty) trusty; urgency=emergency
+radeon-profile (0.2.4) trusty; urgency=emergency
 
   * Change default config location to ~/.config.
   * Update croatian translation
