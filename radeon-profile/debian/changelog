@@ -1,4 +1,4 @@
-radeon-profile (0.2.4-0~bionic) bionic; urgency=emergency
+radeon-profile (0.2.4) bionic; urgency=emergency
 
   * Change default config location to ~/.config.
   * Update croatian translation
