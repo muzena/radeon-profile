@@ -15,7 +15,9 @@ builddir:
 
 builddir/Makefile: builddir
 		#switch trusty, xenial -> bionic, cosmic
-		cd builddir && qmake PREFIX=/usr ../$(APPNAME).pro
+		#cd builddir && qmake PREFIX=/usr ../$(APPNAME).pro
+		cd builddir && qmake PREFIX=/usr ../radeon-profile$(APPNAME).pro
+
 		#cd builddir && qmake -qt=opt-qt59 PREFIX=/usr ../$(APPNAME).pro
 build: build-stamp
 
