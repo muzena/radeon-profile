@@ -18,7 +18,7 @@ DESTDIR := $(CURDIR)/debian/$(APPNAME)
 
 #QTVER=(qt59 | qt56)
 #QTVER=$(qt59) | QTVER=$(qt56)
-QTVER=qt59 | QTVER=qt56
+#QTVER=qt59 | QTVER=qt56
 
 builddir:
 		mkdir -p builddir
@@ -26,18 +26,18 @@ builddir:
 builddir/Makefile: builddir
 		#cd builddir && qmake PREFIX=/usr ../$(APPNAME).pro
 		#cd builddir && qmake PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
-		cd builddir && qmake -qt=opt-$(QTVER) PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
+		cd builddir && qmake -qt=opt-qt59 PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
 build: build-stamp
 
 build-stamp: builddir/Makefile
 		dh_testdir
 		# Add here commands to compile the package.
-		cd builddir && $(MAKE) #$(MAKEFLAGS)
+		cd builddir && $(MAKE) $(MAKEFLAGS)
 		# Generate translations
 		#lupdate $(APPNAME)/$(APPNAME).pro
 		#lrelease $(APPNAME)/$(APPNAME).pro
-		/opt/$QTVER/bin/lupdate $(APPNAME)/$(APPNAME).pro
-		/opt/$QTVER/bin/lrelease $(APPNAME)/$(APPNAME).pro
+		/opt/qt59/bin/lupdate $(APPNAME)/$(APPNAME).pro
+		/opt/qt59/bin/lrelease $(APPNAME)/$(APPNAME).pro
 		touch $@
 
 clean:
@@ -69,7 +69,7 @@ install: build
 		mv  $(CURDIR)/$(APPNAME)/translations/*.qm $(DESTDIR)/usr/share/$(APPNAME)
 
 		# Add here commands to install the package into debian/your_appname
-		cd builddir && $(MAKE) INSTALL_ROOT=$(DESTDIR) install
+		cd builddir && $(MAKE) $(MAKEFLAGS INSTALL_ROOT=$(DESTDIR) install
 # Build architecture-independent files here.
 binary-indep: build install
 # We have nothing to do by default.
