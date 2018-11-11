@@ -10,7 +10,11 @@ DESTDIR := $(CURDIR)/debian/$(APPNAME)
 #TR_DIR=$(CURDIR)/debian/$(APPNAME)/usr/share/qt4/translations
 #QTVER := $(qt59 | $qt56)
 #QTVER := $(qt59) | $(qt56)
-QTVER=$(qt59 | qt56)
+#QTVER=$(qt59 | qt56)
+QTVER=(qt59 | qt56)
+
+#QTVER=$(qt59) | $(qt56)
+#QTVER=$(qt59) | QTVER=$(qt56)
 
 
 builddir:
