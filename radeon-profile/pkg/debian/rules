@@ -19,7 +19,7 @@ builddir:
 builddir/Makefile: builddir
 		#cd builddir && qmake PREFIX=/usr ../$(APPNAME).pro
 		#cd builddir && qmake PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
-		cd builddir && qmake -qt=opt-$QTVER PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
+		cd builddir && qmake -qt=opt-$(QTVER) PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
 build: build-stamp
 
 build-stamp: builddir/Makefile
