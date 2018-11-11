@@ -11,7 +11,8 @@ DESTDIR := $(CURDIR)/debian/$(APPNAME)
 #QTVER := $(qt59 | $qt56)
 #QTVER := $(qt59) | $(qt56)
 #QTVER=$(qt59 | qt56)
-QTVER="qt59 | qt56"
+#QTVER="qt59 | qt56"
+QTVER="(qt59) | (qt56)"
 
 #QTVER=(qt59 | qt56)
 #QTVER=$(qt59) | $(qt56)
