@@ -10,32 +10,28 @@ DESTDIR := $(CURDIR)/debian/$(APPNAME)
 #TR_DIR=$(CURDIR)/debian/$(APPNAME)/usr/share/qt4/translations
 
 
-builddir:
-		mkdir -p builddir
-
-builddir/Makefile: builddir
-		#cd builddir && qmake PREFIX=/usr ../$(APPNAME).pro
-		cd builddir && qmake PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
-		#cd builddir && qmake -qt=opt-qt59 PREFIX=/usr ../$(APPNAME)/$(APPNAME).pro
 build: build-stamp
+build-stamp:
 
-build-stamp: builddir/Makefile
-		dh_testdir
-		# Add here commands to compile the package.
-		cd builddir && $(MAKE) #$(MAKEFLAGS)
-		# Generate translations
-		lupdate $(APPNAME)/$(APPNAME).pro
-		lrelease $(APPNAME)/$(APPNAME).pro
-		#/opt/qt59/bin/lupdate $(APPNAME)/$(APPNAME).pro
-		#/opt/qt59/bin/lrelease $(APPNAME)/$(APPNAME).pro
-		touch $@
+	# Build process
+	cd $(APPNAME)
+	qmake PREFIX=/usr ./$(APPNAME)/$(APPNAME).pro
+	make
+	# Generate translations
+	lupdate $(APPNAME)/$(APPNAME).pro
+	lrelease $(APPNAME)/$(APPNAME).pro
+	#/opt/qt59/bin/lupdate $(APPNAME)/$(APPNAME).pro
+	#/opt/qt59/bin/lrelease $(APPNAME)/$(APPNAME).pro
+	# End of build process
+
+	touch build-stamp
 
 clean:
 		dh_testdir
 		dh_testroot
 		rm -f build-stamp
 		# Add here commands to clean up after the build process.
-		rm -rf builddir
+		#rm -rf builddir
 		#rm translations/*.qm
 		dh_clean
 install: build
@@ -50,7 +46,7 @@ install: build
 		mkdir $(DESTDIR)/usr/share/pixmaps
 		mkdir $(DESTDIR)/usr/share/$(APPNAME)
 		#cp $(CURDIR)/builddir/$(APPNAME) $(DESTDIR)/usr/share/$(APPNAME)
-		cp -r $(CURDIR)/builddir/$(APPNAME) $(DESTDIR)/usr/share/$(APPNAME)
+		cp -r $(CURDIR)/target/$(APPNAME) $(DESTDIR)/usr/share/$(APPNAME)
 		#cp $(CURDIR)/extra/$(APPNAME).desktop $(DESTDIR)/usr/share/applications
 		cp  $(CURDIR)/$(APPNAME)/extra/$(APPNAME).desktop $(DESTDIR)/usr/share/applications
 		#cp $(CURDIR)/extra/$(APPNAME).png $(DESTDIR)/usr/share/pixmaps
@@ -59,7 +55,7 @@ install: build
 		mv  $(CURDIR)/$(APPNAME)/translations/*.qm $(DESTDIR)/usr/share/$(APPNAME)
 
 		# Add here commands to install the package into debian/your_appname
-		cd builddir && $(MAKE) INSTALL_ROOT=$(DESTDIR) install
+		$(MAKE) INSTALL_ROOT=$(DESTDIR) install
 # Build architecture-independent files here.
 binary-indep: build install
 # We have nothing to do by default.
