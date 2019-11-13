@@ -5,7 +5,8 @@ Maintainer: gogo <trebelnik2@gmail.com>
 Uploaders: gogo <trebelnik2@gmail.com>
 Build-Depends: debhelper (>= 9),
                build-essential,
-               xserver-xorg-video-ati | xserver-xorg-video-amdgpu,
+               xserver-xorg-video-ati,
+               xserver-xorg-video-amdgpu,
                mesa-common-dev,
                libgl1-mesa-dev,
                libglu1-mesa-dev,
