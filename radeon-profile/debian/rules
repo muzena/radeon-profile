@@ -11,7 +11,6 @@ endif
 #export DH_COMPAT=3
 APPNAME := radeon-profile
 DESTDIR := $(CURDIR)/debian/$(APPNAME)
-#TR_DIR=$(CURDIR)/debian/$(APPNAME)/usr/share/qt4/translations
 
 build: build-stamp
 build-stamp:
@@ -23,8 +22,6 @@ build-stamp:
 	# Generate translations
 	lupdate $(APPNAME)/$(APPNAME).pro
 	lrelease $(APPNAME)/$(APPNAME).pro
-	#/opt/qt59/bin/lupdate $(APPNAME)/$(APPNAME).pro
-	#/opt/qt59/bin/lrelease $(APPNAME)/$(APPNAME).pro
 	# End of build process
 
 	touch build-stamp
@@ -44,14 +41,9 @@ install: build
 		install -pdm755 $(DESTDIR)/usr/share/applications
 		install -pdm755 $(DESTDIR)/usr/share/pixmaps
 		install -pdm755 $(DESTDIR)/usr/share/$(APPNAME)
-		#cp $(CURDIR)/builddir/$(APPNAME) $(DESTDIR)/usr/share/$(APPNAME)
 		install -Dm664 $(CURDIR)/target/$(APPNAME) $(DESTDIR)/usr/share/$(APPNAME)
-		#install -Dm664 $(CURDIR)/target/$(APPNAME) $(DESTDIR)/usr/share/$(APPNAME)
-		#cp $(CURDIR)/extra/$(APPNAME).desktop $(DESTDIR)/usr/share/applications
 		install -Dm664 $(CURDIR)/$(APPNAME)/extra/$(APPNAME).desktop $(DESTDIR)/usr/share/applications
-		#cp $(CURDIR)/extra/$(APPNAME).png $(DESTDIR)/usr/share/pixmaps
 		install -Dm664 $(CURDIR)/$(APPNAME)/extra/$(APPNAME).png $(DESTDIR)/usr/share/pixmaps
-		#mv $(CURDIR)/translations/*.qm $(DESTDIR)/usr/share/$(APPNAME)
 		install -Dm664 $(CURDIR)/$(APPNAME)/translations/*.qm $(DESTDIR)/usr/share/$(APPNAME)
 
 # Build architecture-independent files here.
