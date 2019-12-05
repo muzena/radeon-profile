@@ -13,7 +13,6 @@ APPNAME := radeon-profile
 DESTDIR := $(CURDIR)/debian/$(APPNAME)
 #TR_DIR=$(CURDIR)/debian/$(APPNAME)/usr/share/qt4/translations
 
-
 build: build-stamp
 build-stamp:
 
