@@ -35,8 +35,6 @@ clean:
 		dh_testroot
 		rm -f build-stamp
 		# Add here commands to clean up after the build process.
-		#rm -rf builddir
-		#rm translations/*.qm
 		dh_clean
 install: build
 		dh_testdir
