@@ -3,5 +3,5 @@ set -e
 
 # Start Radeon profile
 nohup radeon-profile &
-wait &!
+wait $!
 exit 0
