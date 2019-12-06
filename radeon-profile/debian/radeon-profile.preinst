@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -x
 
 # Close Radeon profile
 if [ -e "/usr/bin/radeon-profile" ]; then
