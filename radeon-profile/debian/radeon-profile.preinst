@@ -3,7 +3,7 @@ set -e
 
 # Close Radeon profile
 if [ -e "/usr/bin/radeon-profile" ]; then
-		killall radeon-profile
+	killall radeon-profile
 fi
 
 sleep 5
